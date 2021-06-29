@@ -31,11 +31,31 @@ router.post('/', async (req, res) => {
   // create a new category
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
+  try {
+    const updateCategoryData = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(updateCategoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
   // update a category by its `id` value
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleteCategoryData = await Category.destroy({
+      where: {
+        id: req.params.id
+      },
+    });
+    res.status(200).json(deleteCategoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
   // delete a category by its `id` value
 });
 
