@@ -19,11 +19,11 @@ Product.init(
     type: DataTypes.STRING,
     allowNull: false
   },
-  product_price: {
+  price: {
     type: DataTypes.DECIMAL(10,2),
     allowNull: true
   },
-  product_stock: {
+  stock: {
     type: DataTypes.INTEGER,
     allowNull: true
   },
